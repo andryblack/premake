@@ -18,6 +18,9 @@
 --
 
 	function xcode.getbuildcategory(node)
+		if node.attributes and node.attributes.category then
+			return node.attributes.category
+		end
 		local categories = {
 			[".a"] = "Frameworks",
 			[".c"] = "Sources",
@@ -68,6 +71,9 @@
 --
 
 	function xcode.getfiletype(node)
+		if node.attributes and node.attributes.type then
+			return  node.attributes.type
+		end
 		local types = {
 			[".c"]         = "sourcecode.c.c",
 			[".cc"]        = "sourcecode.cpp.cpp",

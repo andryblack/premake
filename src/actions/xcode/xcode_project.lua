@@ -74,6 +74,16 @@
 		if #tr.frameworks.children > 0 then 
 			tree.insert(tr, tr.frameworks)
 		end
+
+		-- resource folders
+		for _,folder in ipairs(prj.resourcefolders) do
+			local node = tree.insert(tr, tree.new(path.getname(folder)))
+			node.path = folder
+			node.attributes = {
+				category = 'Resources',
+				type = 'folder'
+			}
+		end
 		
 		-- the special folder "Products" holds the target produced by the project; this
 		-- is populated below

@@ -85,6 +85,11 @@
 			scope = "config",
 		},
 
+		resourcefolders = {
+			kind = "dirlist",
+			scope = "project"
+		},
+
 		flags =
 		{
 			kind  = "list",

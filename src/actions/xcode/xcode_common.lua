@@ -37,6 +37,7 @@
 			[".icns"] = "Resources",
 			[".bmp"] = "Resources",
 			[".wav"] = "Resources",
+			[".png"] = "Resources",
 		}
 		return categories[path.getextension(node.name)]
 	end
@@ -777,7 +778,15 @@
 			Universal64 = "$(ARCHS_STANDARD_64_BIT)",
 			Universal = "$(ARCHS_STANDARD_32_64_BIT)",
 		}
-		_p(4,'ARCHS = "%s";', archs[cfg.platform])
+		
+		if os.is("ios") then
+			--_p(4,'ARCHS = "%s";', "$(ARCHS_UNIVERSAL_IPHONE_OS)")
+			_p(4,'SDKROOT = YES;')
+            _p(4,'SDKROOT = %s;', "iphoneos")
+            _p(4,'CODE_SIGN_IDENTITY = "%s";', "iPhone Developer")
+        else
+        	_p(4,'ARCHS = "%s";', archs[cfg.platform])
+        end
 		
 		local targetdir = path.getdirectory(cfg.buildtarget.bundlepath)
 		if targetdir ~= "." then

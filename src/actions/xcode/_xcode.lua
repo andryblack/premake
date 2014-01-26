@@ -11,7 +11,7 @@
 		trigger         = "xcode3",
 		shortname       = "Xcode 3",
 		description     = "Generate Apple Xcode 3 project files (experimental)",
-		os              = "macosx",
+		os              = { "macosx", "ios" },
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "SharedLib", "StaticLib" },
 		

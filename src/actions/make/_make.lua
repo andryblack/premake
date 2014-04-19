@@ -146,7 +146,7 @@
 		valid_languages = { "C", "C++", "C#" },
 
 		valid_tools     = {
-			cc     = { "gcc" },
+			cc     = { "gcc" , "flascc" },
 			dotnet = { "mono", "msnet", "pnet" },
 		},
 

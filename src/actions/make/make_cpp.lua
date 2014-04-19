@@ -144,6 +144,10 @@
 		_p('AR = %s', cc.ar)
 		_p('')
 
+		if cc.make_config then
+			_p(cc.make_config)
+		end
+
 		_p('ifndef RESCOMP')
 		_p('  ifdef WINDRES')
 		_p('    RESCOMP = $(WINDRES)')

@@ -119,12 +119,22 @@
 		if cfg.system ~= "windows" and cfg.kind == "SharedLib" then
 			table.insert(result, "-fPIC")
 		end
+		if premake.gcc.cflags then
+			for _,v in ipairs(premake.gcc.cflags) do
+				table.insert(result,v)
+			end
+		end
 		return result
 	end
 
 
 	function premake.gcc.getcxxflags(cfg)
 		local result = table.translate(cfg.flags, cxxflags)
+		if premake.gcc.cflags then
+			for _,v in ipairs(premake.gcc.cflags) do
+				table.insert(result,v)
+			end
+		end
 		return result
 	end
 

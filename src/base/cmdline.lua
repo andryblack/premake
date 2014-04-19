@@ -58,6 +58,7 @@
 			{ "solaris",  "Solaris" },
 			{ "windows",  "Microsoft Windows" },
 			{ "ios", 	  "Apple iOS" },
+			{ "flash", 	  "Adobe Flash runtime" },
 		}
 	}
 

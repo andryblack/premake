@@ -175,6 +175,11 @@
 		table.insert(result, platform.flags)
 		table.insert(result, platform.ldflags)
 
+		if premake.gcc.ldflags then
+			for _,v in ipairs(premake.gcc.ldflags) do
+				table.insert(result,v)
+			end
+		end
 		return result
 	end
 

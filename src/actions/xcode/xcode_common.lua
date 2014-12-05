@@ -243,6 +243,21 @@
 	end
 
 
+--
+-- Print user build settings contained in xcodebuildsettings
+-- @param offset
+--    offset used by function _p
+-- @param cfg
+--    configuration
+--
+
+	function xcodePrintUserSettings(offset, cfg)
+		for _, item in ipairs(cfg.xcodebuildsettings) do
+			_p(offset, item .. ';')
+		end
+	end
+
+
 ---------------------------------------------------------------------------
 -- Section generator functions, in the same order in which they appear
 -- in the .pbxproj file
@@ -720,6 +735,9 @@
 		_p(2,'%s /* %s */ = {', cfg.xcode.targetid, cfgname)
 		_p(3,'isa = XCBuildConfiguration;')
 		_p(3,'buildSettings = {')
+
+		xcodePrintUserSettings(4, cfg)
+
 		_p(4,'ALWAYS_SEARCH_USER_PATHS = NO;')
 
 		if not cfg.flags.Symbols then
@@ -755,7 +773,7 @@
 			StaticLib = '/usr/local/lib',
 		}
 		_p(4,'INSTALL_PATH = %s;', installpaths[cfg.kind])
-
+		
 		_p(4,'PRODUCT_NAME = "%s";', cfg.buildtarget.basename)
 		_p(3,'};')
 		_p(3,'name = "%s";', cfgname)
@@ -766,9 +784,12 @@
 	function xcode.XCBuildConfiguration_Project(tr, cfg)
 		local cfgname = xcode.getconfigname(cfg)
 
+		
 		_p(2,'%s /* %s */ = {', cfg.xcode.projectid, cfgname)
 		_p(3,'isa = XCBuildConfiguration;')
 		_p(3,'buildSettings = {')
+		
+		xcodePrintUserSettings(4, cfg)
 		
 		local archs = {
 			Native = "$(NATIVE_ARCH_ACTUAL)",
@@ -886,6 +907,7 @@
 		if cfg.flags.ExtraWarnings then
 			_p(4,'WARNING_CFLAGS = "-Wall";')
 		end
+
 		
 		_p(3,'};')
 		_p(3,'name = "%s";', cfgname)

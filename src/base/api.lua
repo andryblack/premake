@@ -42,6 +42,12 @@
 			scope = "solution",
 		},
 
+		xcodebuildsettings =
+		{
+			kind  = "list",
+			scope = "config",
+		}, 		
+
 		debugargs =
 		{
 			kind = "list",

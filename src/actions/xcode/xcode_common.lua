@@ -38,6 +38,7 @@
 			[".bmp"] = "Resources",
 			[".wav"] = "Resources",
 			[".png"] = "Resources",
+			[".bundle"] = "Resources",
 		}
 		return categories[path.getextension(node.name)]
 	end
@@ -96,6 +97,7 @@
 			[".icns"]      = "image.icns",
 			[".bmp"]       = "image.bmp",
 			[".wav"]       = "audio.wav",
+			[".bundle"]       = "wrapper.plug-in",
 		}
 		return types[path.getextension(node.path)] or "text"
 	end
